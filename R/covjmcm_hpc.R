@@ -64,14 +64,14 @@ covjmcm_hpc <- function(object){
       for(j in 2:m[i]){
 
         temp <-  Ei[(sum(1:(j-1))-(j-1)+1):sum(1:(j-1)), ]
-        Gi[j,] <- switch(class(temp),
+        Gi[j,] <- switch(class(temp)[1],
                          "numeric" = Ti[j,j] * temp,
                          "matrix" = Ti[j,j] * colSums(temp))
         for(k in 1:(j-1)){
           k1 <- sum(1:(j-1))-(j-1)+k
           if(k==1) Fi[k1, ] <- -Ti[j,k] * tan(phi[k1,]) * Wi[k1,]
           temp0 <- Ei[(k1-k+1):(k1-1), ]
-          if(k>1)  Fi[k1, ] <- switch(class(temp0),
+          if(k>1)  Fi[k1, ] <- switch(class(temp0)[1],
                                       "numeric" = Ti[j,k]*(-tan(phi[k1,])*Wi[k1,] + temp0),
                                       "matrix" = Ti[j,k]*(-tan(phi[k1,])*Wi[k1,] + colSums(temp0)))
 
@@ -90,7 +90,7 @@ covjmcm_hpc <- function(object){
       I33 <- matrix(0, q, q)
       for(j in 2:m[i]){
         temp1 <- Bi[(sum(1:(j-1))-(j-1)+1):sum(1:(j-1)),]
-        temp2 <- switch(class(temp1),
+        temp2 <- switch(class(temp1)[1],
                         "numeric" = tcrossprod(Bi[(sum(1:(j-1))-(j-1)+1):sum(1:(j-1)),]),
                         "matrix" = crossprod(Bi[(sum(1:(j-1))-(j-1)+1):sum(1:(j-1)),]))
         I33 <- I33 + 2*tcrossprod(Gi[j, ]/Ti[j,j])+temp2

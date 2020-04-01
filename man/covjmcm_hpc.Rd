@@ -17,7 +17,7 @@ an estimated covariance matrix of the estimated parameters in a HPC model.
 the explicit formula, which is the inverse of the estimated Fisher's information matrix.
 }
 \examples{
-##This may take more than 5s.
+##This may take more than 1 min.
 \donttest{
 cattleA <- cattle[cattle$group=='A', ]
 fit.hpc <- jmcm(weight|id|I(ceiling(day/14+1))~1|1,

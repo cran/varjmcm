@@ -3,7 +3,6 @@
 \docType{package}
 \name{varjmcm}
 \alias{varjmcm}
-\alias{varjmcm-package}
 \title{varjmcm: Estimations for the Covariance of Estimated Parameters in Joint Mean-Covariance Models}
 \description{
 The package provides estimations of the covariance of estimated parameters in joint
